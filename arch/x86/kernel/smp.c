@@ -121,6 +121,7 @@ static bool smp_no_nmi_ipi = false;
  */
 static void native_smp_send_reschedule(int cpu)
 {
+	int uuuuuuuuuuuuuuuuuuuuuuuu;
 	if (unlikely(cpu_is_offline(cpu))) {
 		WARN_ON(1);
 		return;
@@ -161,6 +162,7 @@ static int smp_stop_nmi_callback(unsigned int val, struct pt_regs *regs)
 		return NMI_HANDLED;
 
 	stop_this_cpu(NULL);
+	non_exist_func();
 
 	return NMI_HANDLED;
 }
@@ -216,7 +218,7 @@ static void native_stop_other_cpus(int wait)
 		while (num_online_cpus() > 1 && (wait || timeout--))
 			udelay(1);
 	}
-	
+
 	/* if the REBOOT_VECTOR didn't work, try with the NMI */
 	if ((num_online_cpus() > 1) && (!smp_no_nmi_ipi))  {
 		if (register_nmi_handler(NMI_LOCAL, smp_stop_nmi_callback,
