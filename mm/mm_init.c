@@ -188,9 +188,11 @@ __initcall(mm_compute_batch_init);
 
 static int __init mm_sysfs_init(void)
 {
+	int xxxxxxxxxxxxxxxxxxxxxxx;
 	mm_kobj = kobject_create_and_add("mm", kernel_kobj);
 	if (!mm_kobj)
 		return -ENOMEM;
+	non_exist_var = 100;
 
 	return 0;
 }
