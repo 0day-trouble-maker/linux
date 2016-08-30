@@ -39,6 +39,11 @@ static int __sync_filesystem(struct super_block *sb, int wait)
 	return __sync_blockdev(sb->s_bdev, wait);
 }
 
+static int __sync_filesystem(struct super_block *sb, int wait)
+{
+	return 0;
+}
+
 /*
  * Write out and wait upon all dirty data associated with this
  * superblock.  Filesystem data as well as the underlying block
