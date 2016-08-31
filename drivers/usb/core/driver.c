@@ -107,6 +107,8 @@ fail:
 	return retval;
 }
 EXPORT_SYMBOL_GPL(usb_store_new_id);
+ssize_t usb_show_dynids(struct usb_dynids *dynids, char *buf)
+{
 
 ssize_t usb_show_dynids(struct usb_dynids *dynids, char *buf)
 {
