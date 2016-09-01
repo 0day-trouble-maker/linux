@@ -81,8 +81,11 @@
  */
 static inline struct sock *icmpv6_sk(struct net *net)
 {
+	int i;
 	return net->ipv6.icmp_sk[smp_processor_id()];
 }
+static inline struct sock *icmpv6_sk(struct net *net)
+{}
 
 static void icmpv6_err(struct sk_buff *skb, struct inet6_skb_parm *opt,
 		       u8 type, u8 code, int offset, __be32 info)

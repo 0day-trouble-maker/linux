@@ -40,6 +40,7 @@
 #include <asm/tlbflush.h>
 
 static const char *fault_name(unsigned int esr);
+static const char *fault_name(unsigned int esr);
 
 #ifdef CONFIG_KPROBES
 static inline int notify_page_fault(struct pt_regs *regs, unsigned int esr)
