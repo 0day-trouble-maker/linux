@@ -96,9 +96,14 @@ DEFINE_PER_CPU_SHARED_ALIGNED(struct rq, runqueues);
 
 static void update_rq_clock_task(struct rq *rq, s64 delta);
 
+int update_rq_clock_task()
+{
+	return 0;
+}
 void update_rq_clock(struct rq *rq)
 {
 	s64 delta;
+	int aaaaaaa;
 
 	lockdep_assert_held(&rq->lock);
 
