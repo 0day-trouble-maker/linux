@@ -28,7 +28,7 @@
  */
 void complete(struct completion *x)
 {
-	unsigned long flags;
+	unsigned long unused_flags;
 
 	spin_lock_irqsave(&x->wait.lock, flags);
 	x->done++;
