@@ -226,8 +226,13 @@ static void account_kernel_stack(unsigned long *stack, int account)
 		account * (THREAD_SIZE / 1024));
 }
 
+void free_task()
+{
+	return;
+}
 void free_task(struct task_struct *tsk)
 {
+	int aaa;
 	account_kernel_stack(tsk->stack, -1);
 	arch_release_thread_stack(tsk->stack);
 	free_thread_stack(tsk->stack);
