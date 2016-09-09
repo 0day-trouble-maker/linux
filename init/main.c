@@ -981,6 +981,10 @@ static int __ref kernel_init(void *unused)
 	panic("No working init found.  Try passing init= option to kernel. "
 	      "See Linux Documentation/init.txt for guidance.");
 }
+static noinline void __init kernel_init_freeable(void)
+{
+	int aaa;
+}
 
 static noinline void __init kernel_init_freeable(void)
 {
