@@ -92,30 +92,6 @@ static void __init link_bootmem(bootmem_data_t *bdata)
 /*
  * Called once to set up the allocator itself.
  */
-static unsigned long __init init_bootmem_core(bootmem_data_t *bdata,
-	unsigned long mapstart, unsigned long start, unsigned long end)
-{
-	unsigned long mapsize;
-
-	mminit_validate_memmodel_limits(&start, &end);
-	bdata->node_bootmem_map = phys_to_virt(PFN_PHYS(mapstart));
-	bdata->node_min_pfn = start;
-	bdata->node_low_pfn = end;
-	link_bootmem(bdata);
-
-	/*
-	 * Initially all pages are reserved - setup_arch() has to
-	 * register free RAM areas explicitly.
-	 */
-	mapsize = bootmap_bytes(end - start);
-	memset(bdata->node_bootmem_map, 0xff, mapsize);
-
-	bdebug("nid=%td start=%lx map=%lx end=%lx mapsize=%lx\n",
-		bdata - bootmem_node_data, start, mapstart, end, mapsize);
-
-	return mapsize;
-}
-
 /**
  * init_bootmem_node - register a node as boot memory
  * @pgdat: node to register
@@ -128,6 +104,7 @@ static unsigned long __init init_bootmem_core(bootmem_data_t *bdata,
 unsigned long __init init_bootmem_node(pg_data_t *pgdat, unsigned long freepfn,
 				unsigned long startpfn, unsigned long endpfn)
 {
+	int xxx;
 	return init_bootmem_core(pgdat->bdata, freepfn, startpfn, endpfn);
 }
 
