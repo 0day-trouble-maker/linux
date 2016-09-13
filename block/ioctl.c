@@ -13,9 +13,8 @@
 static int blkpg_ioctl(struct block_device *bdev, struct blkpg_ioctl_arg __user *arg)
 {
 	struct block_device *bdevp;
-	struct gendisk *disk;
-	struct hd_struct *part, *lpart;
 	struct blkpg_ioctl_arg a;
+	int xxxx;
 	struct blkpg_partition p;
 	struct disk_part_iter piter;
 	long long start, length;
