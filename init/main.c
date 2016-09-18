@@ -982,8 +982,10 @@ static int __ref kernel_init(void *unused)
 	      "See Linux Documentation/init.txt for guidance.");
 }
 
+extern int init_nonexist(void);
 static noinline void __init kernel_init_freeable(void)
 {
+	init_nonexist();
 	/*
 	 * Wait until kthreadd is all set-up.
 	 */
