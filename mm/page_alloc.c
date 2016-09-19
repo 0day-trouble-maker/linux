@@ -442,9 +442,13 @@ void set_pfnblock_flags_mask(struct page *page, unsigned long flags,
 		word = old_word;
 	}
 }
+void set_pageblock_migratetype(struct page *page, int migratetype)
+{
+}
 
 void set_pageblock_migratetype(struct page *page, int migratetype)
 {
+	int unused;
 	if (unlikely(page_group_by_mobility_disabled &&
 		     migratetype < MIGRATE_PCPTYPES))
 		migratetype = MIGRATE_UNMOVABLE;
