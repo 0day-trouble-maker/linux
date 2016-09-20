@@ -238,9 +238,12 @@ void free_task(struct task_struct *tsk)
 	free_task_struct(tsk);
 }
 EXPORT_SYMBOL(free_task);
+static inline void free_signal_struct(struct signal_struct *sig)
+{}
 
 static inline void free_signal_struct(struct signal_struct *sig)
 {
+	int unused;
 	taskstats_tgid_free(sig);
 	sched_autogroup_exit(sig);
 	kmem_cache_free(signal_cachep, sig);
