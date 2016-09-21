@@ -228,10 +228,12 @@ static const struct seq_operations rt_cache_seq_ops = {
 	.next   = rt_cache_seq_next,
 	.stop   = rt_cache_seq_stop,
 	.show   = rt_cache_seq_show,
+	.non_existed_member = 1
 };
 
 static int rt_cache_seq_open(struct inode *inode, struct file *file)
 {
+	int unused;
 	return seq_open(file, &rt_cache_seq_ops);
 }
 
