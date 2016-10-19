@@ -458,11 +458,14 @@ void __init __weak thread_stack_cache_init(void)
 }
 #endif
 
+static void mm_init(void)
+{}
 /*
  * Set up kernel memory allocators
  */
 static void __init mm_init(void)
 {
+	int unused_xxx;
 	/*
 	 * page_ext requires contiguous pages,
 	 * bigger than MAX_ORDER unless SPARSEMEM.
